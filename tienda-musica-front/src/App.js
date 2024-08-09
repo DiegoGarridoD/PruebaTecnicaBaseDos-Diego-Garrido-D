@@ -7,6 +7,8 @@ import EditarArtista from "./artistas/EditarArtista";
 import GestionGeneros from "./generos/GestionGeneros";
 import AgregarGenero from "./generos/AgregarGenero";
 import EditarGenero from "./generos/EditarGenero";
+import AgregarDisco from "./discos/AgregarDisco";
+import EditarDisco from "./discos/EditarDisco";
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
           <Route path="/gestiongeneros" element={<GestionGeneros/>} />
           <Route path="/agregargenero" element={<AgregarGenero/>} />
           <Route path="/editargenero/:id" element={<EditarGenero />} />
+          <Route path="/gestiondiscos" element={<GestionDiscos />} />
+          <Route path="/agregardisco" element={<AgregarDisco />} />
+          <Route path="/editardisco/:id" element={<EditarDisco />} />
           
 
         </Routes>

@@ -1,8 +1,12 @@
 package com.DGD_back.services;
 
 import com.DGD_back.entities.Disco;
+import com.DGD_back.entities.Genero;
 import com.DGD_back.repositories.DiscoRepository;
+import com.DGD_back.repositories.GeneroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +16,32 @@ public class DiscoService {
     @Autowired
     DiscoRepository discoRepository;
 
+    @Autowired
+    GeneroRepository generoRepository;
+
     public List<Disco> obtenerDiscos() {
         return discoRepository.findAll();
+    }
+
+    public Page<Disco> obtenerDiscosPaginados(Pageable pageable) {
+        return discoRepository.findAll(pageable);
+    }
+
+    /*
+    public List<Disco> obtenerDiscosPorGenero(int generoId) {
+        Genero genero = generoRepository.findById(generoId).orElse(null);
+        if (genero == null) {
+            throw new RuntimeException("Genero no encontrado con id: " + generoId);
+        }
+        return discoRepository.findByGenero(genero, pageable);
+    }*/
+
+    public Page<Disco> obtenerDiscosPorGeneroPaginados(int generoId, Pageable pageable) {
+        Genero genero = generoRepository.findById(generoId).orElse(null);
+        if (genero == null) {
+            throw new RuntimeException("Genero no encontrado con id: " + generoId);
+        }
+        return discoRepository.findByGenero(genero, pageable);
     }
 
     public Disco guardarDisco(Disco disco) {

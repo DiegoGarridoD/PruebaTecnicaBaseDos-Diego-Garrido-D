@@ -20,15 +20,15 @@ public class ArtistaController {
     @Autowired
     ArtistaService artistaService;
 
-    /*
-    @GetMapping
+
+    @GetMapping("/all")
     public ResponseEntity<List<Artista>> obtenerArtistas(){
         List<Artista> artistas = artistaService.obtenerArtistas();
         if (artistas.isEmpty()){
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(artistas);
-    }*/
+    }
 
     @GetMapping
     public ResponseEntity<Page<Artista>> obtenerArtistas(

@@ -19,8 +19,13 @@ export default function AgregarGenero() {
     const onSubmit = async (e) => {
         e.preventDefault();
         const urlBase = "http://localhost:8080/genero";
-        await axios.post(urlBase, genero);
-        navegacion('/gestiongeneros');
+        try {
+            await axios.post(urlBase, genero);
+            alert('Género agregado con éxito');
+            navegacion('/gestiongeneros');
+        } catch (error) {
+            console.error('Error al agregar género', error);
+        }
     }
 
 

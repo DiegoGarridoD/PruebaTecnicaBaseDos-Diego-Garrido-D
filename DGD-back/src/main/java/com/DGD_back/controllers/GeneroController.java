@@ -18,15 +18,15 @@ public class GeneroController {
     @Autowired
     GeneroService generoService;
 
-    /*
-    @GetMapping
+
+    @GetMapping("/all")
     public ResponseEntity<List<Genero>> obtenerGeneros(){
         List<Genero> generos = generoService.obtenerGeneros();
         if(generos.isEmpty()){
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(generos);
-    }*/
+    }
 
     @GetMapping
     public ResponseEntity<Page<Genero>> obtenerGeneros(

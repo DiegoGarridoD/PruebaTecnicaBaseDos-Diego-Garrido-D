@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function AgregarArtista() {
 
-    let navegacion = useNavigate();
+    const navegacion = useNavigate();
 
     const [artista, setArtista] = useState({
         nombre: '',
@@ -20,8 +20,13 @@ export default function AgregarArtista() {
     const onSubmit = async (e) => {
         e.preventDefault();
         const urlBase = "http://localhost:8080/artista";
-        await axios.post(urlBase, artista);
-        navegacion('/gestionartistas');
+        try {
+            await axios.post(urlBase, artista);
+            alert('Artista agregado con éxito');
+            navegacion('/gestionartistas');
+        } catch (error) {
+            console.error('Error al agregar artista', error);
+        }
     }
 
 

@@ -1,8 +1,12 @@
 package com.DGD_back.controllers;
 
+import com.DGD_back.entities.Artista;
 import com.DGD_back.entities.Disco;
 import com.DGD_back.services.DiscoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +20,39 @@ public class DiscoController {
     @Autowired
     DiscoService discoService;
 
-    @GetMapping
-    public ResponseEntity<List<Disco>> obtenerDiscos() {
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Disco>> obtenerTodosDiscos() {
         List<Disco> discos = discoService.obtenerDiscos();
+        if (discos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(discos);
+    }
+
+    @GetMapping("/all/{id}")
+    public ResponseEntity<Page<Disco>> getDiscosByGeneroPaginados(
+            @PathVariable("id") int generoId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        Pageable paging = PageRequest.of(page, size);
+        Page<Disco> discos = discoService.obtenerDiscosPorGeneroPaginados(generoId, paging);
+
+        if (discos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(discos);
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<Disco>> obtenerDiscos(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        Pageable paging = PageRequest.of(page, size);
+        Page<Disco> discos = discoService.obtenerDiscosPaginados(paging);
+
         if (discos.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
