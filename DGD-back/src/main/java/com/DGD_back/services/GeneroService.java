@@ -3,6 +3,8 @@ package com.DGD_back.services;
 import com.DGD_back.entities.Genero;
 import com.DGD_back.repositories.GeneroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +17,8 @@ public class GeneroService {
 
     public List<Genero> obtenerGeneros(){return generoRepository.findAll();}
 
+    public Page<Genero> obtenerGenerosPaginados(Pageable pageable){return generoRepository.findAll(pageable);}
+
     public Genero obtenerGeneroPorId(int id){
         return generoRepository.findById(id).orElse(null);}
 
@@ -23,14 +27,15 @@ public class GeneroService {
         return generoNew;
     }
 
-    public boolean eliminarGenero(int id){
-        try {
-            generoRepository.deleteById(id);
+    public boolean eliminarGenero(int id) {
+        Optional<Genero> genero = generoRepository.findById(id);
+        if (genero.isPresent()) {
+            generoRepository.delete(genero.get());
             return true;
-        }catch (Exception e){
-            return false;
         }
+        return false;
     }
+
 
     public Genero actualizarGenero(int id, Genero nuevoGenero){
         try {

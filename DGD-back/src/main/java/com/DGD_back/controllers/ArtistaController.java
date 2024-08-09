@@ -4,6 +4,9 @@ package com.DGD_back.controllers;
 import com.DGD_back.entities.Artista;
 import com.DGD_back.services.ArtistaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,11 +14,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/artista")
+@CrossOrigin(value = "http://localhost:3000")
 public class ArtistaController {
 
     @Autowired
     ArtistaService artistaService;
 
+    /*
     @GetMapping
     public ResponseEntity<List<Artista>> obtenerArtistas(){
         List<Artista> artistas = artistaService.obtenerArtistas();
@@ -23,7 +28,23 @@ public class ArtistaController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(artistas);
+    }*/
+
+    @GetMapping
+    public ResponseEntity<Page<Artista>> obtenerArtistas(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        Pageable paging = PageRequest.of(page, size);
+        Page<Artista> artistas = artistaService.obtenerArtistasPaginados(paging);
+
+        if (artistas.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(artistas);
     }
+
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Artista> obtenerArtistaPorId(@PathVariable("id") int id) {

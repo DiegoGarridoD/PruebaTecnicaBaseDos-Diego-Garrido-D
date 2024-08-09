@@ -1,9 +1,10 @@
 package com.DGD_back.services;
 
 import com.DGD_back.entities.Artista;
-import com.DGD_back.entities.Genero;
 import com.DGD_back.repositories.ArtistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public class ArtistaService {
 
     public List<Artista> obtenerArtistas(){return artistaRepository.findAll();}
 
+    public Page<Artista> obtenerArtistasPaginados(Pageable pageable){return artistaRepository.findAll(pageable);}
+
     public Artista obtenerArtistaPorId(int id){
         return artistaRepository.findById(id).orElse(null);}
 
@@ -25,12 +28,12 @@ public class ArtistaService {
     }
 
     public boolean eliminarArtista(int id){
-        try {
-            artistaRepository.deleteById(id);
+        Optional<Artista> artista = artistaRepository.findById(id);
+        if (artista.isPresent()){
+            artistaRepository.delete(artista.get());
             return true;
-        }catch (Exception e){
-            return false;
         }
+        return false;
     }
 
     public Artista actualizarArtista(int id, Artista nuevoArtista){

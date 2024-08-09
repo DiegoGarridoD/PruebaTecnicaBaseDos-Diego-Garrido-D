@@ -3,6 +3,9 @@ package com.DGD_back.controllers;
 import com.DGD_back.entities.Genero;
 import com.DGD_back.services.GeneroService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,14 +13,30 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/genero")
+@CrossOrigin(value = "http://localhost:3000")
 public class GeneroController {
     @Autowired
     GeneroService generoService;
 
+    /*
     @GetMapping
     public ResponseEntity<List<Genero>> obtenerGeneros(){
         List<Genero> generos = generoService.obtenerGeneros();
         if(generos.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(generos);
+    }*/
+
+    @GetMapping
+    public ResponseEntity<Page<Genero>> obtenerGeneros(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size){
+
+        Pageable paging = PageRequest.of(page,size);
+        Page<Genero> generos = generoService.obtenerGenerosPaginados(paging);
+
+        if (generos.isEmpty()){
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(generos);
