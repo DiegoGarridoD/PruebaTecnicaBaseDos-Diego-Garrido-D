@@ -27,15 +27,6 @@ public class DiscoService {
         return discoRepository.findAll(pageable);
     }
 
-    /*
-    public List<Disco> obtenerDiscosPorGenero(int generoId) {
-        Genero genero = generoRepository.findById(generoId).orElse(null);
-        if (genero == null) {
-            throw new RuntimeException("Genero no encontrado con id: " + generoId);
-        }
-        return discoRepository.findByGenero(genero, pageable);
-    }*/
-
     public Page<Disco> obtenerDiscosPorGeneroPaginados(int generoId, Pageable pageable) {
         Genero genero = generoRepository.findById(generoId).orElse(null);
         if (genero == null) {

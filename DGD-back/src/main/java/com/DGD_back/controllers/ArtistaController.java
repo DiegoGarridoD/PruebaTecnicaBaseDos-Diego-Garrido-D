@@ -22,7 +22,7 @@ public class ArtistaController {
 
 
     @GetMapping("/all")
-    public ResponseEntity<List<Artista>> obtenerArtistas(){
+    public ResponseEntity<List<Artista>> obtenerTodosArtistas(){
         List<Artista> artistas = artistaService.obtenerArtistas();
         if (artistas.isEmpty()){
             return ResponseEntity.noContent().build();
@@ -31,7 +31,7 @@ public class ArtistaController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Artista>> obtenerArtistas(
+    public ResponseEntity<Page<Artista>> obtenerArtistasPaginados(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 

@@ -1,0 +1,17 @@
+INSERT INTO `bdtiendamusica`.`discos` (`existencias`, `precio`, `titulo`, `artista_id`, `genero_id`) VALUES 
+(25, 18000, 'Hotel California', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'The Eagles'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock')),
+(15, 20000, 'Born in the USA', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'Bruce Springsteen'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock')),
+(35, 16000, 'Rumours', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'Fleetwood Mac'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock')),
+(10, 14000, 'Nevermind', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'Nirvana'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Grunge')),
+(45, 21000, 'Sgt. Pepper\'s Lonely Hearts Club Band', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'The Beatles'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock')),
+(50, 19000, 'A Night at the Opera', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'Queen'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock')),
+(20, 17000, 'Appetite for Destruction', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'Guns N\' Roses'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock')),
+(30, 16000, 'Let It Be', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'The Beatles'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock')),
+(25, 18000, 'Led Zeppelin IV', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'Led Zeppelin'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock')),
+(15, 22000, 'Purple Rain', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'Prince'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Pop')),
+(40, 20000, 'The Joshua Tree', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'U2'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock')),
+(35, 19000, 'The Wall', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'Pink Floyd'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock')),
+(20, 17000, 'Like a Virgin', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'Madonna'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Pop')),
+(50, 21000, 'Sticky Fingers', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'The Rolling Stones'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock')),
+(10, 14000, 'Hysteria', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'Def Leppard'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock')),
+(45, 18000, 'Born to Run', (SELECT id FROM `bdtiendamusica`.`artistas` WHERE nombre = 'Bruce Springsteen'), (SELECT id FROM `bdtiendamusica`.`generos` WHERE nombre = 'Rock'));

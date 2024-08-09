@@ -143,7 +143,11 @@ export default function EditarDisco() {
                         ))}
                     </select>
                 </div>
-                <button type="submit" className="btn btn-primary">Actualizar Disco</button>
+
+                <div className='text-center'>
+                    <button type="submit" className="btn btn-warning btn-sm me-3">Actualizar Disco</button>
+                    <a href="/gestiondiscos" className="btn btn-primary btn-sm">Volver</a>
+                </div>
             </form>
         </div>
     );

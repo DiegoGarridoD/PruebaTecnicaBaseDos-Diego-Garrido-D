@@ -46,7 +46,7 @@ public class DiscoController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Disco>> obtenerDiscos(
+    public ResponseEntity<Page<Disco>> obtenerDiscosPaginados(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 
