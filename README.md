@@ -11,7 +11,7 @@ El problema a trabajar es el control de stock de discos en una tienda de música
 - MySQL 8.0 (opcionalmente, se puede utilizar MySQL Workbench para la gestión de la base de datos)
 
 ## Configuración de Base de Datos
-Este proyecto utiliza MySQL como base de datos. El archivo application.properties se encuentra en la carpeta resources del backend y debe configurarse con las credenciales de la base de datos correspondientes. Las tablas de la base de datos se generan automáticamente al ejecutar por primera vez la aplicación. Además, se incluyen scripts para poblar la base de datos en la carpeta `/Scripts bd`, disponible en el repositorio.
+Este proyecto utiliza MySQL como base de datos. El archivo application.properties se encuentra en la carpeta resources del backend y debe configurarse con las credenciales de la base de datos correspondientes. Las tablas de la base de datos se generan automáticamente al ejecutar por primera vez la aplicación.  Además, se incluye un archivo SQL en la carpeta `/Base de datos` disponible en el repositorio, que contiene una exportación de la base de datos utilizada en este proyecto, facilitando así el proceso de poblar la base de datos.
 
 ## Construcción del Backend
 
