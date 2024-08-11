@@ -36,7 +36,7 @@ Este proyecto utiliza MySQL como base de datos. El archivo application.propertie
 - La aplicación se abrirá automáticamente en el navegador en la dirección `http://localhost:3000`.
 
 ## Funciones
-Se disponen funciones de utilidad para la gestion de discos de una tienda, entre ellas destacan funciones CRUD por cada clase, junto con el filtrado 
+Se disponen funciones de utilidad para la gestion de discos de una tienda, entre ellas destacan funciones CRUD por cada clase, junto con el filtrado de discos disponibles por genero.
 
 
 
